@@ -62,6 +62,11 @@ export type Account = Prisma.AccountModel
  */
 export type Verification = Prisma.VerificationModel
 /**
+ * Model TwoFactor
+ * 
+ */
+export type TwoFactor = Prisma.TwoFactorModel
+/**
  * Model Task
  * 
  */

@@ -29,6 +29,7 @@ export type UserMinAggregateOutputType = {
   email: string | null
   emailVerified: boolean | null
   image: string | null
+  twoFactorEnabled: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -39,6 +40,7 @@ export type UserMaxAggregateOutputType = {
   email: string | null
   emailVerified: boolean | null
   image: string | null
+  twoFactorEnabled: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -49,6 +51,7 @@ export type UserCountAggregateOutputType = {
   email: number
   emailVerified: number
   image: number
+  twoFactorEnabled: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -61,6 +64,7 @@ export type UserMinAggregateInputType = {
   email?: true
   emailVerified?: true
   image?: true
+  twoFactorEnabled?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -71,6 +75,7 @@ export type UserMaxAggregateInputType = {
   email?: true
   emailVerified?: true
   image?: true
+  twoFactorEnabled?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -81,6 +86,7 @@ export type UserCountAggregateInputType = {
   email?: true
   emailVerified?: true
   image?: true
+  twoFactorEnabled?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -164,6 +170,7 @@ export type UserGroupByOutputType = {
   email: string
   emailVerified: boolean
   image: string | null
+  twoFactorEnabled: boolean | null
   createdAt: Date
   updatedAt: Date
   _count: UserCountAggregateOutputType | null
@@ -195,6 +202,7 @@ export type UserWhereInput = {
   email?: Prisma.StringFilter<"User"> | string
   emailVerified?: Prisma.BoolFilter<"User"> | boolean
   image?: Prisma.StringNullableFilter<"User"> | string | null
+  twoFactorEnabled?: Prisma.BoolNullableFilter<"User"> | boolean | null
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
   sessions?: Prisma.SessionListRelationFilter
@@ -202,6 +210,7 @@ export type UserWhereInput = {
   taskCreated?: Prisma.TaskListRelationFilter
   taskAssigned?: Prisma.TaskListRelationFilter
   comments?: Prisma.CommentListRelationFilter
+  twofactors?: Prisma.TwoFactorListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -210,6 +219,7 @@ export type UserOrderByWithRelationInput = {
   email?: Prisma.SortOrder
   emailVerified?: Prisma.SortOrder
   image?: Prisma.SortOrderInput | Prisma.SortOrder
+  twoFactorEnabled?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   sessions?: Prisma.SessionOrderByRelationAggregateInput
@@ -217,6 +227,7 @@ export type UserOrderByWithRelationInput = {
   taskCreated?: Prisma.TaskOrderByRelationAggregateInput
   taskAssigned?: Prisma.TaskOrderByRelationAggregateInput
   comments?: Prisma.CommentOrderByRelationAggregateInput
+  twofactors?: Prisma.TwoFactorOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -228,6 +239,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   name?: Prisma.StringFilter<"User"> | string
   emailVerified?: Prisma.BoolFilter<"User"> | boolean
   image?: Prisma.StringNullableFilter<"User"> | string | null
+  twoFactorEnabled?: Prisma.BoolNullableFilter<"User"> | boolean | null
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
   sessions?: Prisma.SessionListRelationFilter
@@ -235,6 +247,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   taskCreated?: Prisma.TaskListRelationFilter
   taskAssigned?: Prisma.TaskListRelationFilter
   comments?: Prisma.CommentListRelationFilter
+  twofactors?: Prisma.TwoFactorListRelationFilter
 }, "id" | "email">
 
 export type UserOrderByWithAggregationInput = {
@@ -243,6 +256,7 @@ export type UserOrderByWithAggregationInput = {
   email?: Prisma.SortOrder
   emailVerified?: Prisma.SortOrder
   image?: Prisma.SortOrderInput | Prisma.SortOrder
+  twoFactorEnabled?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.UserCountOrderByAggregateInput
@@ -259,6 +273,7 @@ export type UserScalarWhereWithAggregatesInput = {
   email?: Prisma.StringWithAggregatesFilter<"User"> | string
   emailVerified?: Prisma.BoolWithAggregatesFilter<"User"> | boolean
   image?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  twoFactorEnabled?: Prisma.BoolNullableWithAggregatesFilter<"User"> | boolean | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
 }
@@ -269,6 +284,7 @@ export type UserCreateInput = {
   email: string
   emailVerified: boolean
   image?: string | null
+  twoFactorEnabled?: boolean | null
   createdAt: Date | string
   updatedAt: Date | string
   sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
@@ -276,6 +292,7 @@ export type UserCreateInput = {
   taskCreated?: Prisma.TaskCreateNestedManyWithoutCreatedByInput
   taskAssigned?: Prisma.TaskCreateNestedManyWithoutAssignedToInput
   comments?: Prisma.CommentCreateNestedManyWithoutUserInput
+  twofactors?: Prisma.TwoFactorCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -284,6 +301,7 @@ export type UserUncheckedCreateInput = {
   email: string
   emailVerified: boolean
   image?: string | null
+  twoFactorEnabled?: boolean | null
   createdAt: Date | string
   updatedAt: Date | string
   sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
@@ -291,6 +309,7 @@ export type UserUncheckedCreateInput = {
   taskCreated?: Prisma.TaskUncheckedCreateNestedManyWithoutCreatedByInput
   taskAssigned?: Prisma.TaskUncheckedCreateNestedManyWithoutAssignedToInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
+  twofactors?: Prisma.TwoFactorUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserUpdateInput = {
@@ -299,6 +318,7 @@ export type UserUpdateInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorEnabled?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
@@ -306,6 +326,7 @@ export type UserUpdateInput = {
   taskCreated?: Prisma.TaskUpdateManyWithoutCreatedByNestedInput
   taskAssigned?: Prisma.TaskUpdateManyWithoutAssignedToNestedInput
   comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
+  twofactors?: Prisma.TwoFactorUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -314,6 +335,7 @@ export type UserUncheckedUpdateInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorEnabled?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
@@ -321,6 +343,7 @@ export type UserUncheckedUpdateInput = {
   taskCreated?: Prisma.TaskUncheckedUpdateManyWithoutCreatedByNestedInput
   taskAssigned?: Prisma.TaskUncheckedUpdateManyWithoutAssignedToNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
+  twofactors?: Prisma.TwoFactorUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -329,6 +352,7 @@ export type UserCreateManyInput = {
   email: string
   emailVerified: boolean
   image?: string | null
+  twoFactorEnabled?: boolean | null
   createdAt: Date | string
   updatedAt: Date | string
 }
@@ -339,6 +363,7 @@ export type UserUpdateManyMutationInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorEnabled?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -349,6 +374,7 @@ export type UserUncheckedUpdateManyInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorEnabled?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -359,6 +385,7 @@ export type UserCountOrderByAggregateInput = {
   email?: Prisma.SortOrder
   emailVerified?: Prisma.SortOrder
   image?: Prisma.SortOrder
+  twoFactorEnabled?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -369,6 +396,7 @@ export type UserMaxOrderByAggregateInput = {
   email?: Prisma.SortOrder
   emailVerified?: Prisma.SortOrder
   image?: Prisma.SortOrder
+  twoFactorEnabled?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -379,6 +407,7 @@ export type UserMinOrderByAggregateInput = {
   email?: Prisma.SortOrder
   emailVerified?: Prisma.SortOrder
   image?: Prisma.SortOrder
+  twoFactorEnabled?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -403,6 +432,10 @@ export type BoolFieldUpdateOperationsInput = {
 
 export type NullableStringFieldUpdateOperationsInput = {
   set?: string | null
+}
+
+export type NullableBoolFieldUpdateOperationsInput = {
+  set?: boolean | null
 }
 
 export type DateTimeFieldUpdateOperationsInput = {
@@ -435,6 +468,20 @@ export type UserUpdateOneRequiredWithoutAccountsNestedInput = {
   upsert?: Prisma.UserUpsertWithoutAccountsInput
   connect?: Prisma.UserWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutAccountsInput, Prisma.UserUpdateWithoutAccountsInput>, Prisma.UserUncheckedUpdateWithoutAccountsInput>
+}
+
+export type UserCreateNestedOneWithoutTwofactorsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutTwofactorsInput, Prisma.UserUncheckedCreateWithoutTwofactorsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutTwofactorsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutTwofactorsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutTwofactorsInput, Prisma.UserUncheckedCreateWithoutTwofactorsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutTwofactorsInput
+  upsert?: Prisma.UserUpsertWithoutTwofactorsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutTwofactorsInput, Prisma.UserUpdateWithoutTwofactorsInput>, Prisma.UserUncheckedUpdateWithoutTwofactorsInput>
 }
 
 export type UserCreateNestedOneWithoutTaskCreatedInput = {
@@ -487,12 +534,14 @@ export type UserCreateWithoutSessionsInput = {
   email: string
   emailVerified: boolean
   image?: string | null
+  twoFactorEnabled?: boolean | null
   createdAt: Date | string
   updatedAt: Date | string
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
   taskCreated?: Prisma.TaskCreateNestedManyWithoutCreatedByInput
   taskAssigned?: Prisma.TaskCreateNestedManyWithoutAssignedToInput
   comments?: Prisma.CommentCreateNestedManyWithoutUserInput
+  twofactors?: Prisma.TwoFactorCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutSessionsInput = {
@@ -501,12 +550,14 @@ export type UserUncheckedCreateWithoutSessionsInput = {
   email: string
   emailVerified: boolean
   image?: string | null
+  twoFactorEnabled?: boolean | null
   createdAt: Date | string
   updatedAt: Date | string
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
   taskCreated?: Prisma.TaskUncheckedCreateNestedManyWithoutCreatedByInput
   taskAssigned?: Prisma.TaskUncheckedCreateNestedManyWithoutAssignedToInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
+  twofactors?: Prisma.TwoFactorUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutSessionsInput = {
@@ -531,12 +582,14 @@ export type UserUpdateWithoutSessionsInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorEnabled?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
   taskCreated?: Prisma.TaskUpdateManyWithoutCreatedByNestedInput
   taskAssigned?: Prisma.TaskUpdateManyWithoutAssignedToNestedInput
   comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
+  twofactors?: Prisma.TwoFactorUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSessionsInput = {
@@ -545,12 +598,14 @@ export type UserUncheckedUpdateWithoutSessionsInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorEnabled?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
   taskCreated?: Prisma.TaskUncheckedUpdateManyWithoutCreatedByNestedInput
   taskAssigned?: Prisma.TaskUncheckedUpdateManyWithoutAssignedToNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
+  twofactors?: Prisma.TwoFactorUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutAccountsInput = {
@@ -559,12 +614,14 @@ export type UserCreateWithoutAccountsInput = {
   email: string
   emailVerified: boolean
   image?: string | null
+  twoFactorEnabled?: boolean | null
   createdAt: Date | string
   updatedAt: Date | string
   sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
   taskCreated?: Prisma.TaskCreateNestedManyWithoutCreatedByInput
   taskAssigned?: Prisma.TaskCreateNestedManyWithoutAssignedToInput
   comments?: Prisma.CommentCreateNestedManyWithoutUserInput
+  twofactors?: Prisma.TwoFactorCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutAccountsInput = {
@@ -573,12 +630,14 @@ export type UserUncheckedCreateWithoutAccountsInput = {
   email: string
   emailVerified: boolean
   image?: string | null
+  twoFactorEnabled?: boolean | null
   createdAt: Date | string
   updatedAt: Date | string
   sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
   taskCreated?: Prisma.TaskUncheckedCreateNestedManyWithoutCreatedByInput
   taskAssigned?: Prisma.TaskUncheckedCreateNestedManyWithoutAssignedToInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
+  twofactors?: Prisma.TwoFactorUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutAccountsInput = {
@@ -603,12 +662,14 @@ export type UserUpdateWithoutAccountsInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorEnabled?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
   taskCreated?: Prisma.TaskUpdateManyWithoutCreatedByNestedInput
   taskAssigned?: Prisma.TaskUpdateManyWithoutAssignedToNestedInput
   comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
+  twofactors?: Prisma.TwoFactorUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAccountsInput = {
@@ -617,9 +678,91 @@ export type UserUncheckedUpdateWithoutAccountsInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorEnabled?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
+  taskCreated?: Prisma.TaskUncheckedUpdateManyWithoutCreatedByNestedInput
+  taskAssigned?: Prisma.TaskUncheckedUpdateManyWithoutAssignedToNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
+  twofactors?: Prisma.TwoFactorUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutTwofactorsInput = {
+  id: string
+  name: string
+  email: string
+  emailVerified: boolean
+  image?: string | null
+  twoFactorEnabled?: boolean | null
+  createdAt: Date | string
+  updatedAt: Date | string
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
+  accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
+  taskCreated?: Prisma.TaskCreateNestedManyWithoutCreatedByInput
+  taskAssigned?: Prisma.TaskCreateNestedManyWithoutAssignedToInput
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutTwofactorsInput = {
+  id: string
+  name: string
+  email: string
+  emailVerified: boolean
+  image?: string | null
+  twoFactorEnabled?: boolean | null
+  createdAt: Date | string
+  updatedAt: Date | string
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
+  accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
+  taskCreated?: Prisma.TaskUncheckedCreateNestedManyWithoutCreatedByInput
+  taskAssigned?: Prisma.TaskUncheckedCreateNestedManyWithoutAssignedToInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutTwofactorsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutTwofactorsInput, Prisma.UserUncheckedCreateWithoutTwofactorsInput>
+}
+
+export type UserUpsertWithoutTwofactorsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutTwofactorsInput, Prisma.UserUncheckedUpdateWithoutTwofactorsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutTwofactorsInput, Prisma.UserUncheckedCreateWithoutTwofactorsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutTwofactorsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutTwofactorsInput, Prisma.UserUncheckedUpdateWithoutTwofactorsInput>
+}
+
+export type UserUpdateWithoutTwofactorsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorEnabled?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
+  taskCreated?: Prisma.TaskUpdateManyWithoutCreatedByNestedInput
+  taskAssigned?: Prisma.TaskUpdateManyWithoutAssignedToNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutTwofactorsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorEnabled?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
   taskCreated?: Prisma.TaskUncheckedUpdateManyWithoutCreatedByNestedInput
   taskAssigned?: Prisma.TaskUncheckedUpdateManyWithoutAssignedToNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
@@ -631,12 +774,14 @@ export type UserCreateWithoutTaskCreatedInput = {
   email: string
   emailVerified: boolean
   image?: string | null
+  twoFactorEnabled?: boolean | null
   createdAt: Date | string
   updatedAt: Date | string
   sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
   taskAssigned?: Prisma.TaskCreateNestedManyWithoutAssignedToInput
   comments?: Prisma.CommentCreateNestedManyWithoutUserInput
+  twofactors?: Prisma.TwoFactorCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutTaskCreatedInput = {
@@ -645,12 +790,14 @@ export type UserUncheckedCreateWithoutTaskCreatedInput = {
   email: string
   emailVerified: boolean
   image?: string | null
+  twoFactorEnabled?: boolean | null
   createdAt: Date | string
   updatedAt: Date | string
   sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
   taskAssigned?: Prisma.TaskUncheckedCreateNestedManyWithoutAssignedToInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
+  twofactors?: Prisma.TwoFactorUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutTaskCreatedInput = {
@@ -664,12 +811,14 @@ export type UserCreateWithoutTaskAssignedInput = {
   email: string
   emailVerified: boolean
   image?: string | null
+  twoFactorEnabled?: boolean | null
   createdAt: Date | string
   updatedAt: Date | string
   sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
   taskCreated?: Prisma.TaskCreateNestedManyWithoutCreatedByInput
   comments?: Prisma.CommentCreateNestedManyWithoutUserInput
+  twofactors?: Prisma.TwoFactorCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutTaskAssignedInput = {
@@ -678,12 +827,14 @@ export type UserUncheckedCreateWithoutTaskAssignedInput = {
   email: string
   emailVerified: boolean
   image?: string | null
+  twoFactorEnabled?: boolean | null
   createdAt: Date | string
   updatedAt: Date | string
   sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
   taskCreated?: Prisma.TaskUncheckedCreateNestedManyWithoutCreatedByInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
+  twofactors?: Prisma.TwoFactorUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutTaskAssignedInput = {
@@ -708,12 +859,14 @@ export type UserUpdateWithoutTaskCreatedInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorEnabled?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
   taskAssigned?: Prisma.TaskUpdateManyWithoutAssignedToNestedInput
   comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
+  twofactors?: Prisma.TwoFactorUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutTaskCreatedInput = {
@@ -722,12 +875,14 @@ export type UserUncheckedUpdateWithoutTaskCreatedInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorEnabled?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
   taskAssigned?: Prisma.TaskUncheckedUpdateManyWithoutAssignedToNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
+  twofactors?: Prisma.TwoFactorUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUpsertWithoutTaskAssignedInput = {
@@ -747,12 +902,14 @@ export type UserUpdateWithoutTaskAssignedInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorEnabled?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
   taskCreated?: Prisma.TaskUpdateManyWithoutCreatedByNestedInput
   comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
+  twofactors?: Prisma.TwoFactorUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutTaskAssignedInput = {
@@ -761,12 +918,14 @@ export type UserUncheckedUpdateWithoutTaskAssignedInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorEnabled?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
   taskCreated?: Prisma.TaskUncheckedUpdateManyWithoutCreatedByNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
+  twofactors?: Prisma.TwoFactorUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutCommentsInput = {
@@ -775,12 +934,14 @@ export type UserCreateWithoutCommentsInput = {
   email: string
   emailVerified: boolean
   image?: string | null
+  twoFactorEnabled?: boolean | null
   createdAt: Date | string
   updatedAt: Date | string
   sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
   taskCreated?: Prisma.TaskCreateNestedManyWithoutCreatedByInput
   taskAssigned?: Prisma.TaskCreateNestedManyWithoutAssignedToInput
+  twofactors?: Prisma.TwoFactorCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutCommentsInput = {
@@ -789,12 +950,14 @@ export type UserUncheckedCreateWithoutCommentsInput = {
   email: string
   emailVerified: boolean
   image?: string | null
+  twoFactorEnabled?: boolean | null
   createdAt: Date | string
   updatedAt: Date | string
   sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
   taskCreated?: Prisma.TaskUncheckedCreateNestedManyWithoutCreatedByInput
   taskAssigned?: Prisma.TaskUncheckedCreateNestedManyWithoutAssignedToInput
+  twofactors?: Prisma.TwoFactorUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutCommentsInput = {
@@ -819,12 +982,14 @@ export type UserUpdateWithoutCommentsInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorEnabled?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
   taskCreated?: Prisma.TaskUpdateManyWithoutCreatedByNestedInput
   taskAssigned?: Prisma.TaskUpdateManyWithoutAssignedToNestedInput
+  twofactors?: Prisma.TwoFactorUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCommentsInput = {
@@ -833,12 +998,14 @@ export type UserUncheckedUpdateWithoutCommentsInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorEnabled?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
   taskCreated?: Prisma.TaskUncheckedUpdateManyWithoutCreatedByNestedInput
   taskAssigned?: Prisma.TaskUncheckedUpdateManyWithoutAssignedToNestedInput
+  twofactors?: Prisma.TwoFactorUncheckedUpdateManyWithoutUserNestedInput
 }
 
 
@@ -852,6 +1019,7 @@ export type UserCountOutputType = {
   taskCreated: number
   taskAssigned: number
   comments: number
+  twofactors: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -860,6 +1028,7 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   taskCreated?: boolean | UserCountOutputTypeCountTaskCreatedArgs
   taskAssigned?: boolean | UserCountOutputTypeCountTaskAssignedArgs
   comments?: boolean | UserCountOutputTypeCountCommentsArgs
+  twofactors?: boolean | UserCountOutputTypeCountTwofactorsArgs
 }
 
 /**
@@ -907,6 +1076,13 @@ export type UserCountOutputTypeCountCommentsArgs<ExtArgs extends runtime.Types.E
   where?: Prisma.CommentWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountTwofactorsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.TwoFactorWhereInput
+}
+
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -914,6 +1090,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   email?: boolean
   emailVerified?: boolean
   image?: boolean
+  twoFactorEnabled?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   sessions?: boolean | Prisma.User$sessionsArgs<ExtArgs>
@@ -921,6 +1098,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   taskCreated?: boolean | Prisma.User$taskCreatedArgs<ExtArgs>
   taskAssigned?: boolean | Prisma.User$taskAssignedArgs<ExtArgs>
   comments?: boolean | Prisma.User$commentsArgs<ExtArgs>
+  twofactors?: boolean | Prisma.User$twofactorsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -930,6 +1108,7 @@ export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   email?: boolean
   emailVerified?: boolean
   image?: boolean
+  twoFactorEnabled?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["user"]>
@@ -940,6 +1119,7 @@ export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   email?: boolean
   emailVerified?: boolean
   image?: boolean
+  twoFactorEnabled?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["user"]>
@@ -950,17 +1130,19 @@ export type UserSelectScalar = {
   email?: boolean
   emailVerified?: boolean
   image?: boolean
+  twoFactorEnabled?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "email" | "emailVerified" | "image" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "email" | "emailVerified" | "image" | "twoFactorEnabled" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   sessions?: boolean | Prisma.User$sessionsArgs<ExtArgs>
   accounts?: boolean | Prisma.User$accountsArgs<ExtArgs>
   taskCreated?: boolean | Prisma.User$taskCreatedArgs<ExtArgs>
   taskAssigned?: boolean | Prisma.User$taskAssignedArgs<ExtArgs>
   comments?: boolean | Prisma.User$commentsArgs<ExtArgs>
+  twofactors?: boolean | Prisma.User$twofactorsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -974,6 +1156,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     taskCreated: Prisma.$TaskPayload<ExtArgs>[]
     taskAssigned: Prisma.$TaskPayload<ExtArgs>[]
     comments: Prisma.$CommentPayload<ExtArgs>[]
+    twofactors: Prisma.$TwoFactorPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -981,6 +1164,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     email: string
     emailVerified: boolean
     image: string | null
+    twoFactorEnabled: boolean | null
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["user"]>
@@ -1382,6 +1566,7 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   taskCreated<T extends Prisma.User$taskCreatedArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$taskCreatedArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TaskPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   taskAssigned<T extends Prisma.User$taskAssignedArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$taskAssignedArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TaskPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   comments<T extends Prisma.User$commentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$commentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  twofactors<T extends Prisma.User$twofactorsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$twofactorsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TwoFactorPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1416,6 +1601,7 @@ export interface UserFieldRefs {
   readonly email: Prisma.FieldRef<"User", 'String'>
   readonly emailVerified: Prisma.FieldRef<"User", 'Boolean'>
   readonly image: Prisma.FieldRef<"User", 'String'>
+  readonly twoFactorEnabled: Prisma.FieldRef<"User", 'Boolean'>
   readonly createdAt: Prisma.FieldRef<"User", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"User", 'DateTime'>
 }
@@ -1647,6 +1833,7 @@ export type UserCreateManyArgs<ExtArgs extends runtime.Types.Extensions.Internal
    * The data used to create many Users.
    */
   data: Prisma.UserCreateManyInput | Prisma.UserCreateManyInput[]
+  skipDuplicates?: boolean
 }
 
 /**
@@ -1665,6 +1852,7 @@ export type UserCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions
    * The data used to create many Users.
    */
   data: Prisma.UserCreateManyInput | Prisma.UserCreateManyInput[]
+  skipDuplicates?: boolean
 }
 
 /**
@@ -1921,6 +2109,30 @@ export type User$commentsArgs<ExtArgs extends runtime.Types.Extensions.InternalA
   take?: number
   skip?: number
   distinct?: Prisma.CommentScalarFieldEnum | Prisma.CommentScalarFieldEnum[]
+}
+
+/**
+ * User.twofactors
+ */
+export type User$twofactorsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the TwoFactor
+   */
+  select?: Prisma.TwoFactorSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the TwoFactor
+   */
+  omit?: Prisma.TwoFactorOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TwoFactorInclude<ExtArgs> | null
+  where?: Prisma.TwoFactorWhereInput
+  orderBy?: Prisma.TwoFactorOrderByWithRelationInput | Prisma.TwoFactorOrderByWithRelationInput[]
+  cursor?: Prisma.TwoFactorWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.TwoFactorScalarFieldEnum | Prisma.TwoFactorScalarFieldEnum[]
 }
 
 /**

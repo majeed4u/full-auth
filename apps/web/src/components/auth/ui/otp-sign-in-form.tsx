@@ -106,7 +106,7 @@ export default function OtpSignInForm() {
         throw error;
       }
 
-      router.push("/dashboard");
+      router.push("/");
       toast.success("Signed in successfully!");
     } catch (error) {
       console.error("Sign in error:", error);

@@ -1,23 +1,25 @@
 model User {
-  id            String    @id @map("_id")
-  name          String
-  email         String
-  emailVerified Boolean
-  image         String?
-  createdAt     DateTime
-  updatedAt     DateTime
-  sessions      Session[]
-  accounts      Account[]
-  taskCreated   Task[]    @relation("TaskCreated")
-  taskAssigned  Task[]    @relation("TaskAssigned")
-  comments      Comment[]
+  id               String      @id
+  name             String
+  email            String
+  emailVerified    Boolean
+  image            String?
+  twoFactorEnabled Boolean?
+  createdAt        DateTime
+  updatedAt        DateTime
+  sessions         Session[]
+  accounts         Account[]
+  taskCreated      Task[]      @relation("TaskCreated")
+  taskAssigned     Task[]      @relation("TaskAssigned")
+  comments         Comment[]
+  twofactors       TwoFactor[]
 
   @@unique([email])
   @@map("user")
 }
 
 model Session {
-  id        String   @id @map("_id")
+  id        String   @id
   expiresAt DateTime
   token     String
   createdAt DateTime
@@ -32,7 +34,7 @@ model Session {
 }
 
 model Account {
-  id                    String    @id @map("_id")
+  id                    String    @id
   accountId             String
   providerId            String
   userId                String
@@ -51,7 +53,7 @@ model Account {
 }
 
 model Verification {
-  id         String    @id @map("_id")
+  id         String    @id
   identifier String
   value      String
   expiresAt  DateTime
@@ -61,8 +63,18 @@ model Verification {
   @@map("verification")
 }
 
+model TwoFactor {
+  id          String @id
+  secret      String
+  backupCodes String
+  userId      String
+  user        User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("twoFactor")
+}
+
 model Task {
-  id           String       @id @map("_id")
+  id           String       @id
   title        String
   description  String
   status       TaskStatus   @default(TODO)
@@ -94,7 +106,7 @@ enum TaskPriority {
 }
 
 model Comment {
-  id        String   @id @map("_id")
+  id        String   @id
   content   String
   taskId    String
   task      Task     @relation(fields: [taskId], references: [id], onDelete: Cascade)
@@ -107,7 +119,7 @@ model Comment {
 }
 
 model Tag {
-  id        String   @id @map("_id")
+  id        String   @id
   name      String
   color     String?
   tasks     Task[]   @relation("TaskTags")

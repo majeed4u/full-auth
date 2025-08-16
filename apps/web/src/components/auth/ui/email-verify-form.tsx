@@ -72,7 +72,7 @@ export default function VerifyEmailForm() {
 
       // Redirect after a short delay
       setTimeout(() => {
-        router.push("/dashboard");
+        router.push("/");
       }, 2000);
     } catch (error: any) {
       console.error("Verify email error:", error);
@@ -86,7 +86,7 @@ export default function VerifyEmailForm() {
         );
       } else if (error?.code === "EMAIL_ALREADY_VERIFIED") {
         toast.success("Email is already verified!");
-        router.push("/dashboard");
+        router.push("/");
       } else {
         toast.error("Failed to verify email. Please try again.");
       }
@@ -161,7 +161,7 @@ export default function VerifyEmailForm() {
             </div>
           </div>
 
-          <Button className="w-full" onClick={() => router.push("/dashboard")}>
+          <Button className="w-full" onClick={() => router.push("/")}>
             Continue to Dashboard
           </Button>
         </div>
@@ -268,7 +268,7 @@ export default function VerifyEmailForm() {
             </div>
 
             <Link
-              href="/dashboard"
+              href="/"
               className="text-sm text-muted-foreground hover:underline block"
             >
               Skip for now
